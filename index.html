@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muse Fashjewels by AYK — Korean Night Suits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#FBF5EF; --canvas-2:#F5E7DE; --ink:#3F2E32; --charcoal:#8A7A7C;
+    --blush:#E7A9AE; --blush-dim:#EFC2C6; --sage:#A9BDA9; --gold:#C7A15A;
+    --line:rgba(63,46,50,0.14); --white:#FFFDFB;
+    --display:'Fraunces',serif; --body:'Work Sans',sans-serif; --mono:'Space Mono',monospace;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--canvas); color:var(--ink); font-family:var(--body); overflow-x:hidden; }
+  ::selection{ background:var(--blush); color:var(--white); }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1240px; margin:0 auto; padding:0 40px; }
+  @media (max-width:720px){ .wrap{ padding:0 22px; } }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--blush); outline-offset:3px; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* NAV */
+  header{ position:fixed; top:0; left:0; right:0; z-index:100; padding:24px 0 18px; background:linear-gradient(var(--canvas) 60%, transparent); transition:padding 0.4s ease; }
+  header.scrolled{ padding:14px 0; background:var(--canvas); border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; }
+  .wordmark{ font-family:var(--display); font-size:19px; font-weight:500; letter-spacing:0.01em; line-height:1.2; }
+  .wordmark em{ font-style:italic; color:var(--blush); }
+  .wordmark small{ display:block; font-family:var(--mono); font-size:9px; letter-spacing:0.12em; color:var(--charcoal); text-transform:uppercase; margin-top:2px; }
+  .nav-links{ display:flex; gap:34px; font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; }
+  .nav-links a{ position:relative; padding-bottom:3px; }
+  .nav-links a::after{ content:''; position:absolute; left:0; bottom:0; width:0%; height:1px; background:var(--ink); transition:width 0.35s ease; }
+  .nav-links a:hover::after{ width:100%; }
+  @media (max-width:760px){ .nav-links{ display:none; } }
+
+  /* HERO */
+  .hero{ position:relative; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding-top:110px; overflow:hidden; }
+  .hero-eyebrow{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--charcoal); display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+  .hero-eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--blush); display:inline-block; }
+  h1.hero-title{ font-family:var(--display); font-weight:400; font-size:clamp(42px, 7.6vw, 104px); line-height:1.02; letter-spacing:-0.01em; max-width:15ch; }
+  h1.hero-title .it{ font-style:italic; font-weight:400; color:var(--blush); }
+  .hero-sub{ margin-top:30px; max-width:480px; font-size:17px; line-height:1.65; color:var(--charcoal); font-weight:300; }
+  .hero-cta-row{ margin-top:40px; display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+  .btn{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; padding:15px 28px; background:var(--ink); color:var(--white); border:1px solid var(--ink); cursor:pointer; transition:background 0.3s ease, color 0.3s ease, transform 0.3s ease; display:inline-block; }
+  .btn:hover{ background:transparent; color:var(--ink); transform:translateY(-2px); }
+  .btn-ghost{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .btn-ghost:hover{ border-color:var(--ink); background:var(--ink); color:var(--white); }
+  .scroll-cue{ font-family:var(--mono); font-size:10.5px; color:var(--charcoal); letter-spacing:0.1em; writing-mode:vertical-rl; position:absolute; right:40px; bottom:56px; display:flex; align-items:center; gap:10px; }
+  .scroll-cue::after{ content:''; width:1px; height:56px; background:var(--charcoal); display:block; }
+  @media (max-width:900px){ .scroll-cue{ display:none; } }
+
+  .swatch-strip{ margin-top:58px; display:flex; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .swatch{ flex:1; height:88px; position:relative; overflow:hidden; border-right:1px solid var(--line); transition:flex 0.6s cubic-bezier(.2,.7,.2,1); }
+  .swatch:last-child{ border-right:none; }
+  .swatch:hover{ flex:2.6; }
+  .swatch-fill{ position:absolute; inset:0; }
+  .swatch-label{ position:absolute; left:14px; bottom:11px; font-family:var(--mono); font-size:10.5px; letter-spacing:0.04em; opacity:0; transform:translateY(6px); transition:opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s; white-space:nowrap; }
+  .swatch:hover .swatch-label{ opacity:1; transform:translateY(0); }
+  @media (max-width:720px){ .swatch-strip{ flex-wrap:wrap; } .swatch{ height:56px; min-width:20%; } }
+
+  /* STORY */
+  .philosophy{ padding:140px 0 100px; }
+  .phil-grid{ display:grid; grid-template-columns:0.7fr 1fr; gap:76px; align-items:start; }
+  @media (max-width:860px){ .phil-grid{ grid-template-columns:1fr; gap:34px; } }
+  .phil-label{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blush); position:sticky; top:110px; }
+  .phil-label span{ display:block; color:var(--charcoal); margin-top:10px; font-size:11.5px; }
+  blockquote.phil-quote{ font-family:var(--display); font-style:italic; font-weight:400; font-size:clamp(24px, 3.2vw, 38px); line-height:1.32; color:var(--ink); }
+  .phil-body{ margin-top:32px; max-width:56ch; font-size:16px; line-height:1.85; color:var(--charcoal); font-weight:300; }
+
+  /* COLLECTION */
+  .collection{ padding:96px 0 130px; background:var(--canvas-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:52px; gap:24px; flex-wrap:wrap; }
+  .section-head h2{ font-family:var(--display); font-weight:400; font-size:clamp(30px, 4.2vw, 50px); }
+  .section-head h2 .it{ font-style:italic; color:var(--blush); }
+  .section-head p{ max-width:340px; font-size:14px; color:var(--charcoal); line-height:1.6; font-weight:300; }
+
+  .look-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--line); border:1px solid var(--line); }
+  @media (max-width:900px){ .look-grid{ grid-template-columns:1fr; } }
+  .look-card{ background:var(--canvas-2); padding:42px 30px 30px; display:flex; flex-direction:column; min-height:430px; transition:background 0.4s ease; }
+  .look-card:hover{ background:var(--white); }
+  .look-index{ font-family:var(--mono); font-size:10.5px; color:var(--charcoal); letter-spacing:0.08em; }
+  .look-figure{ flex:1; display:flex; align-items:center; justify-content:center; gap:8px; margin:18px 0; }
+  .look-figure svg{ height:auto; }
+  .look-name{ font-family:var(--display); font-style:italic; font-size:22px; margin-bottom:8px; }
+  .look-desc{ font-size:13px; color:var(--charcoal); line-height:1.6; font-weight:300; }
+  .look-meta{ margin-top:20px; padding-top:15px; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-family:var(--mono); font-size:10.5px; color:var(--charcoal); text-transform:uppercase; letter-spacing:0.04em; }
+  .look-price{ font-family:var(--display); font-size:17px; font-style:italic; color:var(--blush); margin-top:12px; }
+
+  /* FABRIC */
+  .atelier{ padding:140px 0; }
+  .atelier-grid{ display:grid; grid-template-columns:1fr 1fr; gap:66px; align-items:center; }
+  @media (max-width:860px){ .atelier-grid{ grid-template-columns:1fr; gap:36px; } }
+  .atelier-visual{ position:relative; aspect-ratio:4/5; background:var(--ink); overflow:hidden; }
+  .atelier-visual svg{ width:100%; height:100%; }
+  .atelier h3{ font-family:var(--display); font-weight:400; font-size:clamp(26px, 3.2vw, 40px); line-height:1.15; margin-bottom:24px; }
+  .atelier h3 .it{ font-style:italic; color:var(--blush); }
+  .atelier p{ font-size:15px; line-height:1.85; color:var(--charcoal); font-weight:300; max-width:52ch; }
+  .atelier p + p{ margin-top:16px; }
+  .stat-row{ display:flex; gap:44px; margin-top:40px; flex-wrap:wrap; }
+  .stat b{ font-family:var(--display); font-size:30px; font-weight:500; display:block; }
+  .stat span{ font-family:var(--mono); font-size:10.5px; color:var(--charcoal); text-transform:uppercase; letter-spacing:0.05em; }
+
+  /* INVITE */
+  .invite{ background:var(--ink); color:var(--white); padding:110px 0; position:relative; overflow:hidden; }
+  .invite-inner{ text-align:center; max-width:640px; margin:0 auto; position:relative; }
+  .invite p.eyebrow{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--blush-dim); margin-bottom:20px; }
+  .invite h2{ font-family:var(--display); font-weight:400; font-size:clamp(28px, 4.4vw, 48px); line-height:1.1; }
+  .invite h2 .it{ font-style:italic; color:var(--blush-dim); }
+  form.signup{ margin-top:44px; display:flex; justify-content:center; gap:0; border-bottom:1px solid rgba(255,253,251,0.3); max-width:440px; margin-left:auto; margin-right:auto; padding-bottom:14px; }
+  form.signup input{ flex:1; background:transparent; border:none; color:var(--white); font-family:var(--body); font-size:16px; padding:8px 4px; outline:none; }
+  form.signup input::placeholder{ color:rgba(255,253,251,0.45); }
+  form.signup button{ background:transparent; border:none; color:var(--blush-dim); font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; padding:8px 4px; }
+  form.signup button:hover{ color:var(--white); }
+  .form-note{ margin-top:15px; font-size:11.5px; color:rgba(255,253,251,0.42); font-family:var(--mono); }
+  .invite-contact{ margin-top:38px; display:flex; justify-content:center; gap:28px; flex-wrap:wrap; font-family:var(--mono); font-size:12px; color:rgba(255,253,251,0.72); }
+  .invite-contact a{ border-bottom:1px solid rgba(255,253,251,0.25); padding-bottom:2px; }
+  .invite-contact a:hover{ color:var(--white); border-color:var(--white); }
+
+  /* FOOTER */
+  footer{ padding:46px 0 38px; }
+  .footer-grid{ display:flex; justify-content:space-between; align-items:flex-start; gap:28px; flex-wrap:wrap; padding-bottom:30px; border-bottom:1px solid var(--line); }
+  .footer-word{ font-family:var(--display); font-size:18px; }
+  .footer-word em{ font-style:italic; color:var(--blush); }
+  .footer-links{ display:flex; gap:38px; flex-wrap:wrap; }
+  .footer-col{ font-family:var(--mono); font-size:11px; line-height:2.05; color:var(--charcoal); text-transform:uppercase; letter-spacing:0.04em; }
+  .footer-col strong{ display:block; color:var(--ink); margin-bottom:6px; }
+  .footer-bottom{ display:flex; justify-content:space-between; padding-top:22px; font-family:var(--mono); font-size:10.5px; color:var(--charcoal); flex-wrap:wrap; gap:10px; }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="wordmark">MUSE FASHJEWELS <em>by AYK</em><small>Korean Night Suits</small></a>
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#philosophy">Our Story</a>
+        <a href="#atelier">Fabric &amp; Care</a>
+        <a href="#invite">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow"><span class="dot"></span> Korean-style night suits, made in Pune</p>
+      <h1 class="hero-title">Soft nights, <span class="it">matching hearts.</span></h1>
+      <p class="hero-sub">Muse Fashjewels by AYK brings Korean-inspired night suits to women and baby girls — including mother-daughter combo sets, so bedtime can be a little sweeter for two.</p>
+      <div class="hero-cta-row">
+        <a href="#collection" class="btn">Shop the Collection</a>
+        <a href="#invite" class="btn btn-ghost">Get in Touch</a>
+      </div>
+
+      <div class="swatch-strip reveal" id="swatchStrip">
+        <div class="swatch"><div class="swatch-fill" style="background:#E7A9AE"></div><div class="swatch-label">Peach Blush</div></div>
+        <div class="swatch"><div class="swatch-fill" style="background:#A9BDA9"></div><div class="swatch-label">Soft Sage</div></div>
+        <div class="swatch"><div class="swatch-fill" style="background:#C7A15A"></div><div class="swatch-label">Honey Gold</div></div>
+        <div class="swatch"><div class="swatch-fill" style="background:#3F2E32"></div><div class="swatch-label">Cocoa</div></div>
+        <div class="swatch"><div class="swatch-fill" style="background:#F5E7DE"></div><div class="swatch-label">Milk Cream</div></div>
+        <div class="swatch"><div class="swatch-fill" style="background:#C7D3DD"></div><div class="swatch-label">Powder Blue</div></div>
+      </div>
+    </div>
+    <div class="scroll-cue">SCROLL</div>
+  </section>
+
+  <!-- STORY -->
+  <section class="philosophy" id="philosophy">
+    <div class="wrap">
+      <div class="phil-grid">
+        <div class="phil-label reveal">
+          01 — Our Story
+          <span>Why we make matching sets</span>
+        </div>
+        <div>
+          <blockquote class="phil-quote reveal">"Some of the sweetest memories happen after the lights go down — story time, giggles, matching pyjamas."</blockquote>
+          <p class="phil-body reveal">Muse Fashjewels by AYK began with a love for Korean loungewear — soft pastel tones, gentle ribbed cottons, and prints that feel calm rather than loud. We design for women and baby girls side by side, so a mother and daughter can twin in something soft on the nights that call for it.</p>
+          <p class="phil-body reveal">Every set is cut for real sleep: breathable fabric, relaxed fits, and details gentle enough for a baby's skin and easy enough for a busy mother's laundry pile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection" id="collection">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Night suits, <span class="it">for two.</span></h2>
+        <p>A few favourites from our women's, baby girl's, and mother-daughter combo ranges.</p>
+      </div>
+
+      <div class="look-grid">
+
+        <div class="look-card reveal">
+          <span class="look-index">WOMEN / SET 01</span>
+          <div class="look-figure">
+            <svg viewBox="0 0 100 200" width="90" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#3F2E32" stroke-width="1.3">
+              <path d="M50 6c-9 0-15 7-15 15 0 8 6 14 15 14s15-6 15-14c0-8-6-15-15-15z"/>
+              <path d="M30 32 C24 46 23 60 26 74 L36 70 L34 108 L66 108 L64 70 L74 74 C77 60 76 46 70 32 C64 42 36 42 30 32Z"/>
+              <path d="M40 108 L36 190 L48 190 L50 130 L52 190 L64 190 L60 108" />
+              <circle cx="50" cy="52" r="2" fill="#E7A9AE" stroke="none"/>
+              <circle cx="42" cy="60" r="2" fill="#E7A9AE" stroke="none"/>
+              <circle cx="58" cy="60" r="2" fill="#E7A9AE" stroke="none"/>
+            </svg>
+          </div>
+          <div class="look-name">Bomi</div>
+          <p class="look-desc">Ribbed short-sleeve top and pants set in Peach Blush, with a soft cherry-blossom print.</p>
+          <div class="look-meta"><span>Ribbed Cotton</span><span>Peach Blush</span></div>
+          <div class="look-price">₹949</div>
+        </div>
+
+        <div class="look-card reveal">
+          <span class="look-index">BABY GIRL / SET 02</span>
+          <div class="look-figure">
+            <svg viewBox="0 0 100 160" width="62" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#3F2E32" stroke-width="1.3">
+              <path d="M50 14c-7 0-12 6-12 12 0 6 5 11 12 11s12-5 12-11c0-6-5-12-12-12z"/>
+              <path d="M38 34 C33 44 32 54 35 64 L42 61 L40 90 L60 90 L58 61 L65 64 C68 54 67 44 62 34 C57 42 43 42 38 34Z"/>
+              <path d="M44 90 L41 140 L51 140 L50 112 L50 140 L59 140 L56 90" />
+              <circle cx="50" cy="70" r="2" fill="#A9BDA9" stroke="none"/>
+            </svg>
+          </div>
+          <div class="look-name">Aegi</div>
+          <p class="look-desc">Cloud-soft romper set for baby girls in Milk Cream, with snap closures for easy changes.</p>
+          <div class="look-meta"><span>Single Jersey</span><span>Milk Cream</span></div>
+          <div class="look-price">₹499</div>
+        </div>
+
+        <div class="look-card reveal">
+          <span class="look-index">MOTHER-DAUGHTER / SET 03</span>
+          <div class="look-figure">
+            <svg viewBox="0 0 160 200" width="130" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#3F2E32" stroke-width="1.2">
+              <g>
+                <path d="M40 6c-8 0-13 6-13 13 0 7 5 12 13 12s13-5 13-12c0-7-5-13-13-13z"/>
+                <path d="M24 30 C19 42 18 54 21 66 L29 63 L27 190 L53 190 L51 63 L59 66 C62 54 61 42 56 30 C51 39 29 39 24 30Z"/>
+              </g>
+              <g>
+                <path d="M118 40c-6 0-10 5-10 10 0 5 4 9 10 9s10-4 10-9c0-5-4-10-10-10z"/>
+                <path d="M105 58 C101 67 100 76 102 85 L109 83 L107 160 L129 160 L127 83 L134 85 C136 76 135 67 131 58 C127 65 109 65 105 58Z"/>
+              </g>
+              <path d="M53 100 L102 90" stroke-dasharray="2 4"/>
+            </svg>
+          </div>
+          <div class="look-name">Eomma &amp; Ttal</div>
+          <p class="look-desc">Matching mother-daughter night suit set in Soft Sage, gingham trim, sold as a pair.</p>
+          <div class="look-meta"><span>Brushed Cotton</span><span>Soft Sage</span></div>
+          <div class="look-price">₹1,499 <span style="font-family:var(--mono); font-size:10px; color:var(--charcoal);">/ set of 2</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FABRIC & CARE -->
+  <section class="atelier" id="atelier">
+    <div class="wrap">
+      <div class="atelier-grid">
+        <div class="atelier-visual reveal">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="500" fill="#3F2E32"/>
+            <circle cx="200" cy="180" r="130" fill="none" stroke="#E7A9AE" stroke-width="1"/>
+            <circle cx="200" cy="180" r="90" fill="none" stroke="#A9BDA9" stroke-width="1"/>
+            <circle cx="200" cy="180" r="50" fill="#E7A9AE" opacity="0.85"/>
+            <line x1="0" y1="340" x2="400" y2="340" stroke="rgba(255,253,251,0.15)"/>
+            <text x="40" y="400" fill="#FFFDFB" font-family="Space Mono, monospace" font-size="12" letter-spacing="1">EST. PUNE, INDIA</text>
+            <text x="40" y="425" fill="rgba(255,253,251,0.5)" font-family="Space Mono, monospace" font-size="12">KOREAN-INSPIRED, SOFT</text>
+            <text x="40" y="445" fill="rgba(255,253,251,0.5)" font-family="Space Mono, monospace" font-size="12">RIBBED COTTON</text>
+          </svg>
+        </div>
+        <div>
+          <p class="phil-label reveal" style="position:static; margin-bottom:20px;">02 — Fabric &amp; Care</p>
+          <h3 class="reveal">Gentle enough for <span class="it">baby skin.</span></h3>
+          <p class="reveal">Every Muse Fashjewels set is cut from soft-washed, breathable ribbed cotton and cotton-blend fabric — pre-shrunk and finished without harsh dyes, so it's gentle against a baby's skin and comfortable for everyday wear.</p>
+          <p class="reveal">Baby sets use snap closures for quick changes, women's sets are sized true-to-fit for a relaxed sleep, and every mother-daughter combo is tested to wash and wear alike, set after set.</p>
+          <div class="stat-row reveal">
+            <div class="stat"><b>3</b><span>Ranges: Women, Baby &amp; Combo</span></div>
+            <div class="stat"><b>100%</b><span>Breathable ribbed cotton</span></div>
+            <div class="stat"><b>Pune</b><span>Designed &amp; shipped from</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITE / CONTACT -->
+  <section class="invite" id="invite">
+    <div class="wrap">
+      <div class="invite-inner reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Twin in something <span class="it">soft.</span></h2>
+        <form class="signup" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Added ✓';">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit">Notify Me</button>
+        </form>
+        <p class="form-note">New sets and restocks, straight to your inbox.</p>
+        <div class="invite-contact">
+          <a href="tel:+918149155282">+91 81491 55282</a>
+          <span>Pune, Maharashtra, India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <a href="#top" class="footer-word">MUSE FASHJEWELS <em>by AYK</em></a>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>Explore</strong>
+          <a href="#collection">Collection</a><br>
+          <a href="#philosophy">Our Story</a><br>
+          <a href="#atelier">Fabric &amp; Care</a>
+        </div>
+        <div class="footer-col">
+          <strong>Studio</strong>
+          Pune, Maharashtra, India<br>
+          +91 81491 55282
+        </div>
+        <div class="footer-col">
+          <strong>Follow</strong>
+          Instagram<br>
+          WhatsApp
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Muse Fashjewels by AYK. Korean night suits for women &amp; baby girls.</span>
+      <span>Designed in Pune</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
